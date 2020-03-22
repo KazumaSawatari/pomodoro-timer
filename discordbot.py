@@ -28,6 +28,6 @@ async def count_time(ctx):
     await ctx.send('作業を終了。7分間休憩')
     #    sleep(1380000)
     await asyncio.sleep(1)
-
+    await ctx.send('休憩終了。')
 
 bot.run(token)
