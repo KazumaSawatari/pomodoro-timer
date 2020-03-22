@@ -1,5 +1,5 @@
 import asyncio
-from time import sleep, time
+from time import sleep
 
 from discord.ext import commands
 import os
@@ -18,16 +18,16 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def start(ctx):
-    count_time(ctx)
+    asyncio.ensure_future(count_time(ctx))
 
 
 async def count_time(ctx):
-    ctx.send('作業を開始。23分後終了')
+    await ctx.send('作業を開始。23分後終了')
     #    sleep(1380000)
-    time.sleep(10000)
-    ctx.send('作業を終了。7分間休憩')
+    await asyncio.sleep(1)
+    await ctx.send('作業を終了。7分間休憩')
     #    sleep(1380000)
-    time.sleep(10000)
+    await asyncio.sleep(1)
 
 
 bot.run(token)
