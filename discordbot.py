@@ -16,7 +16,7 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-async def s(ctx):
+async def start(ctx):
     await ctx.send('作業を開始。23分後終了')
 #    sleep(1380000)
     sleep(10000)
