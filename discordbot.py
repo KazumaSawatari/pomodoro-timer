@@ -9,6 +9,20 @@ bot = commands.Bot(command_prefix='#')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
+@bot.command()
+async def join(ctx):
+    # voicechannelを取得
+    vc = ctx.author.voice.channel
+    # voicechannelに接続
+    await vc.connect()
+
+
+@bot.command()
+async def bye(ctx):
+    # 切断
+    await ctx.voice_client.disconnect()
+
+
 @bot.event
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
@@ -24,10 +38,13 @@ async def start(ctx):
 async def count_time(ctx):
     await ctx.send('作業を開始。23分後終了')
     #    sleep(1380000)
-    await asyncio.sleep(1380)
+    await asyncio.sleep(600)
+    await ctx.send('10分経過。')
+    await asyncio.sleep(780)
     await ctx.send('作業を終了。7分間休憩')
     #    sleep(1380000)
     await asyncio.sleep(420)
     await ctx.send('休憩終了。')
+
 
 bot.run(token)
