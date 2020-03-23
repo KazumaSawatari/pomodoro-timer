@@ -36,6 +36,7 @@ async def start(ctx):
 
 
 async def count_time(ctx):
+    await ctx.send('!sh s')
     await ctx.send('作業を開始。23分後終了')
     #    sleep(1380000)
     await asyncio.sleep(600)
